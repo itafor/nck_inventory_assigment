@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,21 @@ Route::group(
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::post('/refresh', [AuthController::class, 'refresh']);
         Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    }
+);
+
+
+Route::group(
+    [
+        'prefix' => 'admin/inventory',
+
+    ], function () {
+        Route::post('/create', [InventoryController::class, 'store']);
+        Route::get('/list', [InventoryController::class, 'index']);
+        Route::get('/read/{inventory}', [InventoryController::class, 'show']);
+        Route::put('/update/{inventoryId}', [InventoryController::class, 'update']);
+        Route::delete('/destroy/{inventoryId}', [InventoryController::class, 'destroy']);
+
+
     }
 );
