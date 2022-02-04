@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,6 @@ Route::group(
     }
 );
 
-
 Route::group(
     [
         'prefix' => 'admin/inventory',
@@ -42,8 +42,27 @@ Route::group(
         Route::get('/list', [InventoryController::class, 'index']);
         Route::get('/read/{inventory}', [InventoryController::class, 'show']);
         Route::put('/update/{inventoryId}', [InventoryController::class, 'update']);
-        Route::delete('/destroy/{inventoryId}', [InventoryController::class, 'destroy']);
+        Route::delete(
+            '/destroy/{inventoryId}', [
+                InventoryController::class,
+                'destroy']
+        );
 
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'user/inventory',
+
+    ], function () {
+        Route::get('/list', [UserController::class, 'listInventories']);
+        Route::get('/read/{inventory}', [UserController::class, 'readInventory']);
+        Route::post(
+            '/add-to-cart/{inventoryId}', [
+                UserController::class,
+                'addInventoryToCart']
+        );
 
     }
 );

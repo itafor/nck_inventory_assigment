@@ -32,7 +32,7 @@ class InventoryController extends Controller
             $inventories = Inventory::all();
             return response()->json(
                 [
-                    'message' => 'Inventory successfully fetched',
+                    'message' => 'Inventories successfully fetched',
                     'inventories' => $inventories,
                 ], 201
             );
@@ -40,16 +40,6 @@ class InventoryController extends Controller
         } catch (\Exception$e) {
             return response()->json(['error' => $e->getMessage()]);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -98,16 +88,6 @@ class InventoryController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

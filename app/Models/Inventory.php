@@ -16,4 +16,9 @@ class Inventory extends Model
     {
     	return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    // public function cart()
+    // {
+    // 	return $this->hasOne(Cart::class, 'inventory_id', 'id');
+    // }
 }
