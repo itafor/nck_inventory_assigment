@@ -16,11 +16,4 @@ class Cart extends Model
     	return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-     public function inventories()
-    {
-        return $this->hasMany(Inventory::class, 'inventory_id', 'id')
-        ->whereHas('user', function($query){
-        	$query->where('id', auth()->user()->id);
-        });
-    }
 }
